@@ -2,7 +2,7 @@ import 'package:amazon_clone_flutter/common/widgets/loader.dart';
 import 'package:amazon_clone_flutter/constants/utils.dart';
 import 'package:amazon_clone_flutter/features/account/widgets/single_product.dart';
 import 'package:amazon_clone_flutter/features/admin/screens/add_product_screen.dart';
-import 'package:amazon_clone_flutter/features/admin/widgets/admin_services.dart';
+import 'package:amazon_clone_flutter/features/admin/services/admin_services.dart';
 import 'package:amazon_clone_flutter/models/product.dart';
 import 'package:flutter/material.dart';
 
@@ -18,20 +18,30 @@ class _PostsScreenState extends State<PostsScreen> {
 
   final AdminServices adminServices = AdminServices();
 
-  @override
-  void initState() {
-    super.initState();
-    fetchAllProducts();
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  // }
 
   fetchAllProducts() async {
     products = await adminServices.fetchAllProducts(context);
     setState(() {});
-    print(products);
+  }
+
+  void deleteProduct(Product product, int index) {
+    adminServices.deleteProduct(
+        context: context,
+        product: product,
+        onSuccess: () {
+          products!.removeAt(index);
+          setState(() {});
+          showSnackBar(context, "Product Deleted Successfully!");
+        });
   }
 
   @override
   Widget build(BuildContext context) {
+    fetchAllProducts();
     return products == null
         ? const Loader()
         : Scaffold(
@@ -60,7 +70,9 @@ class _PostsScreenState extends State<PostsScreen> {
                           ),
                         ),
                         IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            deleteProduct(productData, index);
+                          },
                           icon: const Icon(Icons.delete_outline),
                         ),
                       ],

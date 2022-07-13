@@ -62,7 +62,7 @@ class _MyAppState extends State<MyApp> {
         ),
         splashTransition: SplashTransition.fadeTransition,
         backgroundColor: GlobalVariables.selectedNavBarColor,
-        duration: 0,
+        duration: 1000,
         nextScreen: Provider.of<UserProvider>(context).user.token.isNotEmpty
             ? Provider.of<UserProvider>(context).user.type == "user"
                 ? const BottomBar()
