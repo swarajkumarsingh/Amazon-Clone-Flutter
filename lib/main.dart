@@ -57,11 +57,11 @@ class _MyAppState extends State<MyApp> {
         splash: Container(
           height: 400,
           width: double.infinity,
-          color: GlobalVariables.selectedNavBarColor,
+          color: Colors.white,
           child: Image.asset("assets/images/amazon_in.png"),
         ),
         splashTransition: SplashTransition.fadeTransition,
-        backgroundColor: GlobalVariables.selectedNavBarColor,
+        backgroundColor: Colors.white,
         duration: 1000,
         nextScreen: Provider.of<UserProvider>(context).user.token.isNotEmpty
             ? Provider.of<UserProvider>(context).user.type == "user"
