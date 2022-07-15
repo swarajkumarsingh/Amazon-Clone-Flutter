@@ -22,7 +22,7 @@ void httpErrorHandle({
       print(jsonDecode(response.body)['error']);
       break;
     default:
-      showSnackBar(context, "Something went wrong, Please try again later.");
-      print(jsonDecode(response.body));
+      showSnackBar(context, "${jsonDecode(response.body)}");
+      print("jsonDecode(response.body) ");
   }
 }

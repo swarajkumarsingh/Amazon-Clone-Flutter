@@ -152,7 +152,7 @@
 
 import 'dart:convert';
 
-import 'package:amazon_clone_flutter/common/bottom_bar.dart';
+import 'package:amazon_clone_flutter/common/widgets/bottom_bar.dart';
 import 'package:amazon_clone_flutter/constants/error_handling.dart';
 import 'package:amazon_clone_flutter/constants/global_variables.dart';
 import 'package:amazon_clone_flutter/constants/utils.dart';
